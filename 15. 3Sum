@@ -1,0 +1,18 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        result=[]
+        n_nums = sorted(nums)
+
+        for i in range(len(n_nums)-2):
+            if i>0 and n_nums[i] == n_nums[i-1]:
+                continue
+            for j in range(i+1, len(n_nums)-1):
+                if j>i+1 and n_nums[j] == n_nums[j-1]:
+                    continue
+                for k in range(j+1, len(n_nums)):
+                    if k> j+1 and n_nums[k] == n_nums[k-1]:
+                        continue
+                    if n_nums[i]+n_nums[j]+n_nums[k]==0:
+                        result.append([n_nums[i],n_nums[j],n_nums[k]])
+                    
+        return result

@@ -1,0 +1,18 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+    if not height:
+      return 0
+    
+    volumn = 0
+    L, R = 0, len(height)-1
+    left_max, right_max = height[L], height[R]
+    
+    while L < R:
+      left_max, right_max = max(height[L], left_max), max(height[R],right_max)
+      if left_max <= right_max:
+        volumn += left_max-height[L]
+        L += 1
+      else:
+        volumn += right_max-height[R]
+        R -= 1
+      return volumn

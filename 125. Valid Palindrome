@@ -2,3 +2,18 @@
 s = s.lower()
 s = re.sub('[^a-z0-9]','',s)
 return s == s[::-1]
+
+#sol2.
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        new_s: Deque =  collections.deque()
+        
+        for char in s:
+            if char.isalnum():
+                new_s.append(char.lower())
+                
+        while len(new_s) > 1:
+            if new_s.popleft() != new_s.pop():
+                return False
+            
+        return True
